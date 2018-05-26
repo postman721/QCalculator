@@ -4,7 +4,7 @@
 #QCalculator comes with ABSOLUTELY NO WARRANTY; 
 #for details see: http://www.gnu.org/copyleft/gpl.html. 
 #This is free software, and you are welcome to redistribute it under 
-#GPL Version 2, June 1991
+#GPL Version 2, June 1991. This v.2, which centers text and fixes very minor issues.
 
 from PyQt5 import *
 from PyQt5.QtCore import *
@@ -218,10 +218,13 @@ class Ui_MainWindow(QMainWindow):
 
 #Make display uneditable + add placeholder text
         self.display.setReadOnly(True)
-        self.display.setPlaceholderText("Press = ,for example, x+y before continuing. ")
+        self.display.setPlaceholderText("Press = after x(operator)y before continuing. ")
+
 
     def insert_number(self,value):
+        self.display.setAlignment(Qt.AlignCenter)
         self.display.insert(value)
+
     
 #Injecting numbers to the screen                  			
     def calculation(self):
