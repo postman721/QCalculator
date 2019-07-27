@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#QCalculator Copyright (c) 2018 JJ Posti <techtimejourney.net> 
+#QCalculator 1.1 Copyright (c) 2018 JJ Posti <techtimejourney.net> 
 #QCalculator comes with ABSOLUTELY NO WARRANTY; 
 #for details see: http://www.gnu.org/copyleft/gpl.html. 
 #This is free software, and you are welcome to redistribute it under 
@@ -234,7 +234,7 @@ class Ui_MainWindow(QMainWindow):
             operate=(screen_value[1])
             value2=(screen_value[2])
             result_is=self.finalize(value1,value2,operate)
-            print result_is
+            print (result_is)
             self.display.setText(str(result_is))	
         except Exception as e:
             self.display.setText("Something went wrong. Try again.")
@@ -256,8 +256,7 @@ class Ui_MainWindow(QMainWindow):
             elif operate is '/':
                 return value1 / value2
         except Exception as e:
-            print "Something went wrong. Try again."			
-			        
+            print ("Something went wrong. Try again.")			
 
     def retranslateUi(self, MainWindow):
         _translate = QCoreApplication.translate
@@ -281,6 +280,10 @@ class Ui_MainWindow(QMainWindow):
         self.clear.setText(_translate("MainWindow", "C"))
         self.back.setText(_translate("MainWindow", "Back"))
 
+
+ 
+ 
+ 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     MainWindow = QMainWindow()
