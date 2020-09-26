@@ -11,7 +11,19 @@ Here is a calculator done with Python and QT5. This calculator will become PostX
 
 Dependencies: python-pyqt5
 
-![calc](https://user-images.githubusercontent.com/29865797/39462755-26e388ec-4d03-11e8-9877-34c68e76f74d.jpg)
+
+26th September 2020: Upgrade to version 2:
+
+- Program's outlook is redesigned.
+
+- Full Keypad/Keypress support is added. 
+
+Notice: Back key is Space. Return key is equals.
+
+If your keys do not see to work, click the display part of the calculator to remedy the issue.
+Also make sure that you have numlock enabled if you are using keypad.
+
+![calculator](https://user-images.githubusercontent.com/29865797/94340935-6d67e680-000e-11eb-97eb-9fd096e3a78b.jpg)
 
 
 
