@@ -18,7 +18,7 @@ Dependencies: python-pyqt5
 
 - Full Keypad/Keypress support is added. 
 
-Notice: Back key is Space. Return key is equals.
+Notice: Back key is Space. Return key is equals. ESC is clear.
 
 If your keys do not see to work, click the display part of the calculator to remedy the issue.
 Also make sure that you have numlock enabled if you are using keypad.
