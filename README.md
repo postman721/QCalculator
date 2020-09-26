@@ -23,9 +23,9 @@ Notice: Back key is Space. Return key is equals.
 If your keys do not see to work, click the display part of the calculator to remedy the issue.
 Also make sure that you have numlock enabled if you are using keypad.
 
+
 ![calculator](https://user-images.githubusercontent.com/29865797/94340935-6d67e680-000e-11eb-97eb-9fd096e3a78b.jpg)
 
 
 
 ______________
-Original post is at: https://www.techtimejourney.net/qcalculator-is-released/
