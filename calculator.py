@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-#QCalculator 1.1 Copyright (c) 2018 JJ Posti <techtimejourney.net> 
+#QCalculator 2.0 Copyright (c) 2018 JJ Posti <techtimejourney.net> 
 #QCalculator comes with ABSOLUTELY NO WARRANTY; 
 #for details see: http://www.gnu.org/copyleft/gpl.html. 
 #This is free software, and you are welcome to redistribute it under 
-#GPL Version 2, June 1991. This v.2, which centers text and fixes very minor issues.
+#GPL Version 2, June 1991.
 
 from PyQt5 import *
 from PyQt5.QtCore import *
@@ -20,17 +20,16 @@ class Ui_MainWindow(QMainWindow):
         MainWindow.resize(370, 396)
         MainWindow.setMinimumSize(QSize(370, 396))
         MainWindow.setMaximumSize(QSize(370, 396))
-        MainWindow.setStyleSheet("*{background-color:#353535;\n"
-"color:white;\n"
-"font-size: 12px;\n"
-"border: 2px solid #232323; border-radius: 9px}\n"
+        MainWindow.setStyleSheet("*{background-color:white;\n"
+"color:black;\n"
+"font-size: 18px;}\n"
 "\n"
 "QPushButton:hover {\n"
 "    background-color: #2a598a;\n"
 "}\n"
 "\n"
 "QLineEdit:focus {\n"
-"    background-color: #454645;\n"
+"    background-color: #d2d3d9;\n"
 "}\n"
 "")
         self.centralwidget = QWidget(MainWindow)
@@ -39,9 +38,8 @@ class Ui_MainWindow(QMainWindow):
         self.frame.setGeometry(QRect(10, 10, 341, 381))
         self.frame.setMinimumSize(QSize(24, 53))
         font = QFont()
-        font.setPointSize(-1)
         self.frame.setFont(font)
-        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.frame.setFrameShadow(QFrame.Raised)
         self.frame.setObjectName("frame")
         self.display = QLineEdit(self.frame)
@@ -78,7 +76,6 @@ class Ui_MainWindow(QMainWindow):
         self.button_plus.setMinimumSize(QSize(24, 53))
         self.button_plus.setMaximumSize(QSize(16777215, 53))
         font = QFont()
-        font.setPointSize(-1)
         self.button_plus.setFont(font)
         self.button_plus.setObjectName("button_plus")
         self.button_4 = QPushButton(self.frame)
@@ -106,7 +103,6 @@ class Ui_MainWindow(QMainWindow):
         self.button_x.setMinimumSize(QSize(24, 53))
         self.button_x.setMaximumSize(QSize(16777215, 42))
         font = QFont()
-        font.setPointSize(-1)
         self.button_x.setFont(font)
         self.button_x.setObjectName("button_x")
         self.button_7 = QPushButton(self.frame)
@@ -134,7 +130,6 @@ class Ui_MainWindow(QMainWindow):
         self.button_minus.setMinimumSize(QSize(24, 53))
         self.button_minus.setMaximumSize(QSize(16777215, 42))
         font = QFont()
-        font.setPointSize(-1)
         self.button_minus.setFont(font)
         self.button_minus.setObjectName("button_minus")
         self.spot = QPushButton(self.frame)
@@ -147,7 +142,6 @@ class Ui_MainWindow(QMainWindow):
         self.spot.setMinimumSize(QSize(24, 53))
         self.spot.setMaximumSize(QSize(16777215, 53))
         font = QFont()
-        font.setPointSize(-1)
         self.spot.setFont(font)
         self.spot.setObjectName("spot")
         self.button_divide = QPushButton(self.frame)
@@ -160,7 +154,6 @@ class Ui_MainWindow(QMainWindow):
         self.button_divide.setMinimumSize(QSize(24, 53))
         self.button_divide.setMaximumSize(QSize(16777215, 53))
         font = QFont()
-        font.setPointSize(-1)
         self.button_divide.setFont(font)
         self.button_divide.setObjectName("button_divide")
         self.button_0 = QPushButton(self.frame)
@@ -178,7 +171,6 @@ class Ui_MainWindow(QMainWindow):
         self.button_equals.setMinimumSize(QSize(24, 53))
         self.button_equals.setMaximumSize(QSize(16777215, 53))
         font = QFont()
-        font.setPointSize(-1)
         self.button_equals.setFont(font)
         self.button_equals.setObjectName("button_equals")
         self.clear = QPushButton(self.frame)
@@ -198,6 +190,7 @@ class Ui_MainWindow(QMainWindow):
 
 #Buttons to the screen, using Lambda here to save time
         self.button_1.clicked.connect(lambda:self.insert_number('1'))
+
         self.button_2.clicked.connect(lambda:self.insert_number('2'))
         self.button_3.clicked.connect(lambda:self.insert_number('3'))
         self.button_4.clicked.connect(lambda:self.insert_number('4'))
@@ -216,9 +209,13 @@ class Ui_MainWindow(QMainWindow):
         self.back.clicked.connect(lambda:self.display.backspace())
         self.spot.clicked.connect(lambda:self.insert_number('.'))
 
+#Return pressed        
+        self.display.returnPressed.connect(self.calculation)
+
+
 #Make display uneditable + add placeholder text
         self.display.setReadOnly(True)
-        self.display.setPlaceholderText("Press = after x(operator)y before continuing. ")
+        self.display.setPlaceholderText("Press = after x(operator)y. ")
 
 
     def insert_number(self,value):
@@ -237,10 +234,8 @@ class Ui_MainWindow(QMainWindow):
             print (result_is)
             self.display.setText(str(result_is))	
         except Exception as e:
-            self.display.setText("Something went wrong. Try again.")
+            self.display.setText("Something went wrong.")
             
-			
-
 #Doing the actual calculations
     def finalize(self, value1, value2, operate):
         try:
@@ -248,23 +243,27 @@ class Ui_MainWindow(QMainWindow):
             value2=float(value2)
         
             if operate is '+':
-                return value1 + value2 
+                return value1 + value2                
             elif operate is '*':
-                return value1 * value2 
+                return value1 * value2
             elif operate is '-':
                 return value1 - value2 
             elif operate is '/':
-                return value1 / value2
+                return value1 / value2               
         except Exception as e:
-            print ("Something went wrong. Try again.")			
-
+            print ("Something went wrong.")
+            
+#Keypress events
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.close()    
+        
     def retranslateUi(self, MainWindow):
         _translate = QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "QCalculator"))
         self.button_1.setText(_translate("MainWindow", "1"))
         self.button_2.setText(_translate("MainWindow", "2"))
         self.button_3.setText(_translate("MainWindow", "3"))
-        self.button_plus.setText(_translate("MainWindow", "+"))
         self.button_4.setText(_translate("MainWindow", "4"))
         self.button_5.setText(_translate("MainWindow", "5"))
         self.button_6.setText(_translate("MainWindow", "6"))
@@ -274,20 +273,93 @@ class Ui_MainWindow(QMainWindow):
         self.button_9.setText(_translate("MainWindow", "9"))
         self.button_minus.setText(_translate("MainWindow", "-"))
         self.spot.setText(_translate("MainWindow", "."))
+        self.button_plus.setText(_translate("MainWindow", "+"))
         self.button_divide.setText(_translate("MainWindow", "/"))
         self.button_0.setText(_translate("MainWindow", "0"))
         self.button_equals.setText(_translate("MainWindow", "="))
         self.clear.setText(_translate("MainWindow", "C"))
         self.back.setText(_translate("MainWindow", "Back"))
-
-
  
- 
+class Window(QMainWindow):
+    def __init__(self):
+        super(Window, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+    def keyPressEvent(self, ev):
+        #print(ev.text())
+        if ev.key() == Qt.Key_1:
+            print "key 1"
+            self.ui.button_1.click()
+            
+        if ev.key() == Qt.Key_2:
+            print "key 2"
+            self.ui.button_2.click()
+            
+        if ev.key() == Qt.Key_3:
+            print "key 3"
+            self.ui.button_3.click()
+            
+        if ev.key() == Qt.Key_4:
+            print "key 4"
+            self.ui.button_4.click()
+       
+        if ev.key() == Qt.Key_5:
+            print "key 5"
+            self.ui.button_5.click()
+        
+        if ev.key() == Qt.Key_6:
+            print "key 6"
+            self.ui.button_6.click()
+        
+        if ev.key() == Qt.Key_7:
+            print "key 7"
+            self.ui.button_7.click()
+            
+        if ev.key() == Qt.Key_8:
+            print "key 8"
+            self.ui.button_8.click()
+            
+        if ev.key() == Qt.Key_9:
+            print "key 9"
+            self.ui.button_9.click()
+       
+        if ev.key() == Qt.Key_0:
+            print "key 0"
+            self.ui.button_0.click()
+        
+        if ev.key() == Qt.Key_Plus:
+            print "key +"
+            self.ui.button_plus.click()
+        
+        if ev.key() == Qt.Key_Minus:
+            print "key -"
+            self.ui.button_minus.click()
+            
+        if ev.key() == Qt.Key_Escape:
+            print "Clear"
+            self.ui.clear.click()
+        
+        if ev.key() == Qt.Key_Comma:
+            print "."
+            self.ui.spot.click()
+        
+        if ev.key() == Qt.Key_Slash:
+            print "/"
+            self.ui.button_divide.click()
+            
+        if ev.key() == Qt.Key_Asterisk:
+            print "*"
+            self.ui.button_x.click()
+            
+        if ev.key() == Qt.Key_Space:
+            print "Back"
+            self.ui.back.click()                                                          
+                               
  
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    MainWindow = QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
+    MainWindow = Window()
+    
     MainWindow.show()
     sys.exit(app.exec_())
