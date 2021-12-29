@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#QCalculator 2.0 Copyright (c) 2018 JJ Posti <techtimejourney.net> 
+#QCalculator 2.1 Copyright (c) 2018 JJ Posti <techtimejourney.net> 
 #QCalculator comes with ABSOLUTELY NO WARRANTY; 
 #for details see: http://www.gnu.org/copyleft/gpl.html. 
 #This is free software, and you are welcome to redistribute it under 
@@ -20,18 +20,7 @@ class Ui_MainWindow(QMainWindow):
         MainWindow.resize(370, 396)
         MainWindow.setMinimumSize(QSize(370, 396))
         MainWindow.setMaximumSize(QSize(370, 396))
-        MainWindow.setStyleSheet("*{background-color:white;\n"
-"color:black;\n"
-"font-size: 18px;}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #2a598a;\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    background-color: #d2d3d9;\n"
-"}\n"
-"")
+        MainWindow.setStyleSheet(("* {border: none; color: #e3e0d8; background-color: #1b1b1b; selection-background-color:#080912;selection-color: #3f3f40; margin-top:14px; margin-bottom:14px; }")) 
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QFrame(self.centralwidget)
@@ -289,71 +278,71 @@ class Window(QMainWindow):
     def keyPressEvent(self, ev):
         #print(ev.text())
         if ev.key() == Qt.Key_1:
-            print "key 1"
+            print ("key 1")
             self.ui.button_1.click()
             
         if ev.key() == Qt.Key_2:
-            print "key 2"
+            print ("key 2")
             self.ui.button_2.click()
             
         if ev.key() == Qt.Key_3:
-            print "key 3"
+            print ("key 3")
             self.ui.button_3.click()
             
         if ev.key() == Qt.Key_4:
-            print "key 4"
+            print ("key 4")
             self.ui.button_4.click()
        
         if ev.key() == Qt.Key_5:
-            print "key 5"
+            print ("key 5")
             self.ui.button_5.click()
         
         if ev.key() == Qt.Key_6:
-            print "key 6"
+            print ("key 6")
             self.ui.button_6.click()
         
         if ev.key() == Qt.Key_7:
-            print "key 7"
+            print ("key 7")
             self.ui.button_7.click()
             
         if ev.key() == Qt.Key_8:
-            print "key 8"
+            print ("key 8")
             self.ui.button_8.click()
             
         if ev.key() == Qt.Key_9:
-            print "key 9"
+            print ("key 9")
             self.ui.button_9.click()
        
         if ev.key() == Qt.Key_0:
-            print "key 0"
+            print ("key 0")
             self.ui.button_0.click()
         
         if ev.key() == Qt.Key_Plus:
-            print "key +"
+            print ("key +")
             self.ui.button_plus.click()
         
         if ev.key() == Qt.Key_Minus:
-            print "key -"
+            print ("key -")
             self.ui.button_minus.click()
             
         if ev.key() == Qt.Key_Escape:
-            print "Clear"
+            print ("Clear")
             self.ui.clear.click()
         
         if ev.key() == Qt.Key_Comma:
-            print "."
+            print (".")
             self.ui.spot.click()
         
         if ev.key() == Qt.Key_Slash:
-            print "/"
+            print ("/")
             self.ui.button_divide.click()
             
         if ev.key() == Qt.Key_Asterisk:
-            print "*"
+            print ("*")
             self.ui.button_x.click()
             
         if ev.key() == Qt.Key_Space:
-            print "Back"
+            print ("Back")
             self.ui.back.click()                                                          
                                
  
